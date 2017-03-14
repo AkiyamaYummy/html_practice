@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>我的程序设计基础课程设计</title>
+	<script>
+		function show_list(id,Arr_name,Arr_id){
+			if(id.innerHTML.length==0){
+				for(var i=0;i<Arr_name.length;i++){
+					id.innerHTML += 
+					("<li><a class=\'link\' href=\'#"+Arr_id[i]+"\'>"+Arr_name[i]+"</li>");
+				}
+			}else id.innerHTML="";
+		}
+	</script>
+	<style>
+		.mian{
+			width:100%; height:3800px;
+			background:#F0F0F0;
+			color:black;
+		}
+		.page{
+			float:left;
+			height:100%;
+			margin:0 50px 0 320px;
+		}
+		.left{
+			position:fixed;
+			float:left;
+			width:270px; height:100%;
+			background:#BEBEBE;
+			color:white;
+		}
+		h1{font:40px "Microsoft YaHei";}
+		h2{
+			font:25px "Microsoft YaHei";
+			text-indent:1em;
+		}
+		h3{
+			font:bold 17px "Microsoft YaHei";
+			text-indent:1em;
+		}
+		p{
+			font:15px/1.5em "宋体",sans-serif;
+			text-indent:2em;
+		}
+		p:after{content:</br>;}
+		a.link{color:#642100;}
+		ul.list_style_1{
+			font:lighter 14px "Microsoft YaHei",sans-serif;
+			display:table;
+			list-style-position:inside;
+			Border:1px dashed grey;
+			padding:5px 40px;
+			list-style-type:circle;
+		}
+		ol.list_style_2{
+			font:lighter 14px "Microsoft YaHei",sans-serif;
+			display:table;
+			Border:1px dashed grey;
+			padding:5px 40px;
+		}
+		ul.list_style_3{
+			font:"宋体",sans-serif;
+			display:table;
+			list-style-position:inside;
+			padding:5px 25px;
+			list-style-type:circle;
+		}
+		var{font:bold 14px sans-serif;}
+	</style>
+</head>
+<body style="margin:0">
+	<div class="mian">
+		<div class="page">
+			<h1><a id="main_title">关于我的课程设计</a></h1>
+			
+			<p>您好，我是yummy，以下是关于本次我的课程设计的介绍文档，通过这篇文档，您将对我所编写的“图书管理系统”有一个较为详细的了解。如果您对源码产生了兴趣，请点击这篇课程设计作品的<a class="link" target="_blank" href="https://github.com/AkiyamaYummy/C_language_homework">GitHub链接</a>。</p>
+			
+			<ul>
+				<a id="list_style_1">
+				<caption>历史版本：</caption>
+				<li>0.0.1 由codeblocks开发并发布于2017/3/1</li>
+				<li>9.9.9 加入了，呃……说明文档，由gvim开发并发布于2017/3/13</li>
+				<span>（在这期间我学习了Java的一些知识并从零开始学习HTML，令人愉快。）</span>
+				</a>
+			</ul>
+
+			<h2><a id="sub_title_1">概述</a></h2>
+
+			<p>我的“图书管理系统”版本从0.0.1更新到9.9.9，是一次历史性的大规模更新。更新后的变化如下：</p>
+
+			<ul class="list_style_1">
+				<a>
+				<li>解决了我刚花了长达两天的时间学习了HTML，却不能用在课设里显摆的问题。</li>
+				</a>
+			</ul>
+			
+			<p>由于此篇文档的作用，主要在于展示我的HTML与CSS学习成果，所以我懒得在文档中加入更多更详细的内容。而是会将我的实验报告经过修改，附在文档的末尾。</p>
+
+			<h2><a id="sub_tytle_2">我的实验报告</a></h2>
+			
+			<h3><a id="1.1">1.1 题目名称</a></h3>
+			
+			<p>图书信息管理系统</p>
+
+			<h3><a id="1.2">1.2 时间进度</a></h3>
+			
+			<p>2017/2/28~2017/3/1</p>
+
+			<h3><a id="1.3">1.3 开发环境</a></h3>
+
+			<p>所用语言：C语言；所用IDE：Codeblocks。</p>
+
+			<h3><a id="2.1">2.1 功能说明</a></h3>
+
+			<ol class="list_style_2" type="1">
+				<li>使用二进制文件保存图书信息列表。</li>
+				<li>支持图书信息的增添和删除。</li>
+				<li>支持对图书信息的查找。
+					<ol type="i">
+						<li>实现循书号查找。</li>
+						<li>实现循关键词查找。</li>
+					</ol>
+				</li>
+			</ol>
+
+			<h3><a id="2.2">2.2 解决方案</a></h3>
+
+			<p>将图书信息保存在结构体中。并将结构体以按照书号的形式储存在红黑树中。使用散列表来实现循关键词查找图书。在使用散列表找到关键词字符串对应的书号后再通过书号在红黑树中搜索待查图书。</p>
+
+			<h3><a id="3.1">3.1 模块结构</a></h3>
+
+			<ol class="list_style_2" type="none">
+				
+				<li>在<var>lib.h</var>中定义了<var>book</var>结构体和对<var>book</var>结构体中的信息进行操作的<var>b_PRINT</var>以及<var>put_book_in_file</var>两个函数。以及包含了一些字符串操作的函数。</li>
+				
+				<li>在<var>RB_tree.h</var>中定义了<var>RB_tree</var>结构体，红黑树相关的节点结构体以及红黑树相关的操作函数。</li>
+				
+				<li>在<var>main.c</var>中定义了图书管理系统的界面操作以及对用户输入的指令的回应。</li>
+				
+				<li>在<var>vector.h</var>中定义了<var>vector</var>类，包含了<var>vector</var>数据结构的部分操作接口。</li>
+				
+				<li>在<var>hash.h</var>中定义了<var>hash</var>类，提供了一个由字符串到某种目标数据类型的映射。</li>
+
+				<li>在二进制文件<var>lib</var>中储存了上次保存后的图书信息列表。<li>
+				
+			</ol>
+
+			<h3><a id="3.2">3.2 数据结构</a></h3>
+				<ul class="list_style_2">
+					<li>在红黑树中进行：
+						<ul>
+							<li>在树中增添一本新书的信息。</li>
+							<li>循书号在树中删除一本已有的图书的信息。</li>
+							<li>循书号查找图书信息。</li>
+						</ul>
+					</li>
+					<li>在散列表中进行：
+						<ul>
+							<li>在增添图书信息时，以书名和作者名为关键词，在散列表中存入从关键词到书号的映射。</li>
+							<li>在用户循关键词查找图书时，通过散列表由关键词得到相应图书信息。</li>
+						</ul>
+					</li>
+					<li>在向量中进行：
+						<ul>
+							<li>一个向量储存某一个关键词所对应的一些书号。</li>
+							<li>向量是散列表映射的实际目标类型。在用户实行循关键词查找时，过程为关键词->散列表->关键词所对应的向量->关键词所对应的书号（可能有多个）。</li>
+						</ul>
+					</li>
+				</ul>
+			<h3><a id="3.3">3.3 总体流程</a></h3>
+			<img style="width:100%" src="http://thumbnail0.baidupcs.com/thumbnail/7208cb96ee27f5c57fce0a37ec820027?fid=3305955985-250528-204203888062831&time=1489485600&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-nWI0pWVTbKHmGDCsEeU1nYSvk3A%3d&expires=8h&chkbd=0&chkv=0&dp-logid=1688103283940547069&dp-callid=0&size=c10000_u10000&quality=90">
+			<h3><a id="3.4">3.4 关键算法</a></h3>
+				<p>我在课程设计中编写的，是以字符串为键，正整数为值的散列表，其编码生成算法如下：</p>
+				<p>在展示伪代码之前，我们约定如下：</p>
+				<ul class="list_style_2" style="font-size:15px">
+					<li>伪代码的层次结构靠文字缩进格式区分；</li>
+					<li>M为散列表内部实际储存单元个数；</li>
+					<li>S为作为键值的字符串，S=>i表示S中第i个字符所对应的ASCII码（i从1开始计算）；</li>
+					<li>其中出现的值p和q的和(p+q)，等于用于储存正整数的数据类型所占二进制的位数（如我们拿Java中的int型来储存数据，则此时 p+q=32）；</li>
+					<li>算法中出现的二进制左移和右移操作均在空缺的位上补零；</li>
+					<li>算法中出现的取模运算“a % b”只得到非负整数，在a为负数时，任取数n使得 a + n b >= 0 ，运算“a % b”得到的结果为“( a + n b )%b”的值（算法中，取模运算“a % b”，b恒为正整数）。</li>
+				</ul>
+				<p>伪代码：</p>
+				<pre><strong style="font-size:15px">
+	散列表编码生成函数(传入:字符串S)
+		声明整数:code 初始化code的值为0
+		声明整数:i 初始化i的值为1
+		循环进行:
+			code = code + S=>i
+			code = (code左移p位)异或(code右移q位)
+			如果 i 等于 S 中的元素数，那么跳出循环。
+		code = code % M
+		返回code，code即为字符串S对应的散列表码
+				</strong></pre>
+				<p>如此进行散列表编码的生成，可以通过异或的位运算来相当于每次将 S=>i 加入code后，都将code对应的二进制数的左侧p位和右侧q位交换，来使散列表码的生成能够更随机，从而尽量减少冲突的发生。</p>
+				<p>以上就是我对我课程设计中的关键算法的描述和解读。</p>
+			<h3><a id="3.5">3.5 界面设计</a></h3>
+			<img style="width:60%" src="http://thumbnail0.baidupcs.com/thumbnail/d823fe19b584983e6b48a5ca127d7f42?fid=3305955985-250528-67251125706258&time=1489485600&rt=pr&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-2noj2z3SgEgca4%2b2M%2bwCoHmFbj4%3d&expires=8h&chkbd=0&chkv=0&dp-logid=1688221829800347313&dp-callid=0&size=c10000_u10000&quality=90">
+			<h3><a id="4.1">4.1 调试记录</a></h3>
+			<p>2017/2/28 19:00~23:00</p>
+			<p>写完了红黑树部分的代码，红黑树搜索接口和插入接口调试通过。并开始了对红黑树删除接口的调试。</p>
+			<p>2017/3/1 7:00~8:30</p>
+			<p>红黑树删除接口基本调试完成。</p>
+			<p>2017/3/1 13:30~23:59</p>
+			<p>其他部分代码完成并调试完成。</p>
+			<h3><a id="5.1">5.1 创新说明</a></h3>
+			<p>（1）并没有使用指导书建议的用链表保存图书信息，而是采用了复杂度更低的红黑树。</p>
+			<p>（2）引入了散列表和向量，实现了接近常数复杂度的关键词查找。</p>
+			<p>（3）其他的略，一些精巧的小函数，比如那些运用了递归和三目运算符的字符串查找函数比较令人满意。</p>
+			<h3><a id="6.1">6.1 一点体会</a></h3>
+			<p>十几个小时的编码时间，荡气回肠，令人享受。是对我刚刚学完的数据结构课程的一个不错的复习和巩固，也让我回忆起很多C语言的语法。让我满怀自信步入下一阶段的学习。</p>
+			<br/><br/><br/><br/><br/><br/><br/><br/>
+			<h4 style="text-align:right"><i>&#169;&#8194;yummy&#8194;&#8194;&#8194;</i></h4>
+		</div>
+		<div class="left">
+			<h2><a class="link" href="#main_title">关于我的课程设计</a></h2>
+			<ul class="list_style_3" style="font-size:20px">
+				<li><a class="link" href="#sub_title_1">概述</a></li>
+				<li><a class="link" href="#sub_tytle_2">我的实验报告</a>
+					<ul class="list_style_3" style="font-size:17px">
+						<li><a class="link" href="#1.1" onclick="
+							show_list(part_1,['1.1 题目名称','1.2 时间进度','1.3 开发环境'],['1.1','1.2','1.3']);
+							">程序实践概述</a>
+							<ul id="part_1"></ul>
+						</li>
+						<li><a class="link" href="#2.1" onclick="
+							show_list(part_2,['2.1 功能说明','2.2 解决方案'],['2.1','2.2']);
+							">问题分析</a>
+							<ul id="part_2"></ul>
+						</li>	
+						<li><a class="link" href="#3.1" onclick="
+							show_list(part_3,['3.1 模块结构','3.2 数据结构','3.3 总体流程','3.4 关键算法','3.5 界面设计'],['3.1','3.2','3.3','3.4','3.5']);
+							">方案设计</a>
+							<ul id="part_3"></ul>
+						</li>	
+						<li><a class="link" href="#4.1">调试记录</a>
+							<ul id="part_4"></ul>
+						</li>	
+						<li><a class="link" href="#5.1">创新说明</a>
+							<ul id="part_5"></ul>
+						</li>	
+						<li><a class="link" href="#6.1">体会与建议</a>
+							<ul id="part_6"></ul>
+						</li>	
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
